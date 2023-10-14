@@ -10,7 +10,7 @@
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
-          <root url="jar://$USER_HOME$/Downloads/speccheck_lab1.jar!/" />
+          <root url="jar://$MODULE_DIR$/junit-platform-console-standalone-1.6.2.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -19,7 +19,7 @@
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
-          <root url="jar://$USER_HOME$/Downloads/junit-platform-console-standalone-1.6.2.jar!/" />
+          <root url="jar://$MODULE_DIR$/speccheck_mini1.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />

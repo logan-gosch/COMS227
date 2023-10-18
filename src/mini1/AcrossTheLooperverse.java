@@ -76,10 +76,13 @@ public class AcrossTheLooperverse
     {
         double answer = x;
         int count = 0;
+        double difference = Math.abs((Math.pow(answer, 2.0) - x));
 
-        while ((Math.pow(answer, 2.0) - x) >= err) {
+        while (difference >= err) {
             answer = (answer + x / answer) / 2.0;
             count++;
+
+            difference = Math.abs(x - (answer * answer));
         }
 
         return count;
@@ -142,12 +145,28 @@ public class AcrossTheLooperverse
      */
     public static String starMaker(String s)
     {
-        for (int i = 0; i < s.length(); ) {
-            if (s.charAt(i) == '(') {
-                String temp
+        int i = 0;
+        String result = s;
+
+        while (i < result.length()) {
+            if (result.charAt(i) == '(') {
+                if (result.indexOf(')', i) == -1) {
+                    break;
+                }
+                String temp = result.substring(i + 1, result.indexOf(')', i + 1));
+
+                temp = temp.replaceAll("[a-z]", "*");
+                temp = temp.replaceAll("\\(", "");
+
+                result = result.substring(0, i) + temp + result.substring(result.indexOf(')', i) + 1);
             }
+            i++;
         }
-        return null;
+
+        result = result.replaceAll("\\(", "");
+        result = result.replaceAll("\\)", "");
+
+        return result;
     }
 
 
@@ -168,8 +187,25 @@ public class AcrossTheLooperverse
      */
     public static String makeSmallestPalindrome(String s)
     {
-        // TODO
-        return null;
+        int i = 0;
+        int j = s.length() - 1;
+        while (j >= 0) {
+            if (s.charAt(i) == s.charAt(j)) {
+                i++;
+            }
+            j--;
+        }
+
+        if (i == s.length()) {
+            return s;
+        }
+
+        String end = s.substring(i);
+        String start = new StringBuilder(end).reverse().toString();
+
+        String middle = makeSmallestPalindrome(s.substring(0, i));
+
+        return start + middle + end;
     }
 
     /**
@@ -193,9 +229,28 @@ public class AcrossTheLooperverse
      * @param n
      *   number of rows in the diagram
      */
-    public static void makePattern(int n)
-    {
-        // TODO
+    public static void makePattern(int n) {
+        for (int i = 1; i <= n; i++) {
+
+            int l = (n - i) * 2;
+            while (l > 0) {
+                System.out.print(" ");
+                l--;
+            }
+
+            for (int j = 0; j < i; j++) {
+                System.out.print((char) ('a' + j) + " ");
+                if (j != 0 && j == i - 1) {
+                    for (int k = j - 1; k >= 0; k--) {
+                        System.out.print((char) ('a' + k));
+                        if (k != 0) {
+                            System.out.print(" ");
+                        }
+                    }
+                }
+            }
+            System.out.println();
+        }
     }
 
     /**
@@ -252,8 +307,30 @@ public class AcrossTheLooperverse
      */
     public static String wordGameChecker(String guess, String secret)
     {
-        // TODO
-        return null;
+        if (guess.length() != secret.length()) {
+            return null;
+        }
+
+        StringBuilder result = new StringBuilder();
+
+        for (int i = 0; i < secret.length(); i++) {
+            for (int j = i; j < secret.length(); j++) {
+                boolean charMatch = guess.charAt(j) == secret.charAt(i);
+                if (i == j && charMatch) {
+                    result.append("*");
+                    break;
+                } else if (charMatch) {
+                    result.append("?");
+                    break;
+                }
+
+                if (j == secret.length() - 1) {
+                    result.append("-");
+                }
+            }
+
+        }
+        return result.toString();
     }
 
 

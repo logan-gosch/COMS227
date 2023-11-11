@@ -10,7 +10,7 @@ public class CountFiles {
 //        System.out.println(file.isDirectory());
 //        System.out.println(file.getName());
 //        System.out.println(Arrays.toString(file.listFiles()));
-        System.out.println(countFile(new File("./src/lab7")));
+        System.out.println(countFile(new File("./src/hw3")));
     }
 
     public static int countFile(File file) {
@@ -21,7 +21,7 @@ public class CountFiles {
             File[] files = file.listFiles();
             for (File f : files) {
                 System.out.println(f);
-                sum = (files.length - 1) + countFile(f);
+                sum += countFile(f);
             }
             return sum;
         }

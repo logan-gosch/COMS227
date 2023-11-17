@@ -28,7 +28,7 @@
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
-          <root url="jar://$USER_HOME$/Downloads/speccheck_hw3.jar!/" />
+          <root url="jar://$USER_HOME$/Downloads/mini3_specchecker.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />

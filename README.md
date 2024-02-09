@@ -1,2 +1,5 @@
-# Java227
-An archive of Java227 work
+# COMS 227
+An archive of COMS 227 work
+* Homework
+* Labs
+* Miniassignments
